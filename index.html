@@ -25,9 +25,18 @@
             <input type="range" value="0" min="0" max="20" id="iloscMaleL" oninput="wybieranieMaleL()">
             <output id="wybMaleL"></output>
         </p>
-        <p><button id="geHaslo" onclick="generujHaslo()">Generuj hasło</button></p>
-        <p>Wygenerowane hasło: <output id="haslo"></output></p>
-
+        <p>
+            Podaj ilośc znaków specjalnych
+            <input type="range" value="0" min="0" max="20" id="iloscZnaki" oninput="wybieranieZnaki()">
+            <output id="wybZnaki"></output>
+        </p>
+        <p>
+            Podaj ilośc cyfr
+            <input type="range" value="0" min="0" max="20" id="iloscCyfry" oninput="wybieranieCyfry()">
+            <output id="wybCyfry"></output>
+        </p>
+        <p><button id="genHaslo" onclick="generujHaslo()">Generuj hasło</button></p>
+        <p>Wygenrowane hasło: <output id="haslo"></output></p>
     </div>
 </body>
 </html>
