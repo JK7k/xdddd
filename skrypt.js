@@ -6,10 +6,30 @@ var iloscZnaki=0;
 var iloscCyfry=0;
 function ustawWolne(){
     iloscWolnychZnakow=+iloscZn-(+iloscDuzeL+ +iloscMaleL+ +iloscZnaki+ +iloscCyfry);
+
+    if(iloscWolnychZnakow<0){
+        reset();
+        alert("Funkcja idiotoodporna - za mało znaków");
+    }
     document.getElementById("iloscDuzeL").max=+iloscWolnychZnakow+ +iloscDuzeL;
     document.getElementById("iloscMaleL").max=+iloscWolnychZnakow+ +iloscMaleL;
     document.getElementById("iloscZnaki").max=+iloscWolnychZnakow+ +iloscZnaki;
     document.getElementById("iloscCyfry").max=+iloscWolnychZnakow+ +iloscCyfry;
+}
+function reset(){
+    iloscCyfry=0;
+    document.getElementById("iloscCyfry").values=0;
+    document.getElementById("wybCyfry").values=0;
+    iloscDuzeL=0;
+    document.getElementById("iloscDuzeL").values=0;
+    document.getElementById("wybDuzeL").values=0;
+    iloscMaleL=0;
+    document.getElementById("iloscMaleL").values=0;
+    document.getElementById("wybMaleL").values=0;
+    iloscZnaki=0;
+    document.getElementById("iloscZnaki").values=0;
+    document.getElementById("wybZnaki").values=0;
+    iloscWolnychZnakow=iloscZn;
 }
 function wybieranieDuzeL(){
     iloscDuzeL=document.getElementById("iloscDuzeL").value;
@@ -57,6 +77,10 @@ function generujHaslo(){
     //losowanie cyfr
     for(let i=0;i<iloscCyfry;i++){
         haslo+=alfabetCyfry[Math.floor(Math.random()*alfabetCyfry.length)];
+    }
+    //losowanie dodatkowych znakow, ktorych nie wybral użytkownik
+    for(let i=0;i<iloscWolnychZnakow; i++){
+        haslo+=alfabetMale.charAt(Math.floor(Math.random()*alfabetMale.length));
     }
    // let dane=zmianaKolejnosci(haslo);
     document.getElementById("haslo").value=zmianaKolejnosci(haslo);
